@@ -49,7 +49,7 @@ Plans:
 **Plans:** 4 plans
 
 Plans:
-- [ ] 02-01-PLAN.md — Content foundation: types, MDX utilities, scraper enhancement, shadcn components
+- [x] 02-01-PLAN.md — Content foundation: types, MDX utilities, scraper enhancement, shadcn components
 - [ ] 02-02-PLAN.md — Category listing pages with filter bar, grid/table toggle, pagination
 - [ ] 02-03-PLAN.md — Item and mask detail pages with card expansivo and accordion sections
 - [ ] 02-04-PLAN.md — Pagefind search integration + patch notes pages + visual verification

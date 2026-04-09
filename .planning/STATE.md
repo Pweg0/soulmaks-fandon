@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 01-02-PLAN.md
-last_updated: "2026-04-09T01:06:49.075Z"
+stopped_at: Completed 02-01-PLAN.md
+last_updated: "2026-04-09T02:57:39.697Z"
 progress:
   total_phases: 6
   completed_phases: 1
-  total_plans: 4
-  completed_plans: 4
-  percent: 100
+  total_plans: 8
+  completed_plans: 5
+  percent: 63
 ---
 
 # Project State: SoulmaskBR — Guia & Server List
@@ -24,22 +24,22 @@ progress:
 
 **Core Value:** Ser a referência central em português para jogadores de Soulmask — reunindo todo o conhecimento do jogo e conectando a comunidade através da server list.
 
-**Current Focus:** Phase 01 — fundacao
+**Current Focus:** Phase 02 — wiki-conteudo
 
 ---
 
 ## Current Position
 
-Phase: 01 (fundacao) — EXECUTING
-Plan: 4 of 4
+Phase: 02 (wiki-conteudo) — EXECUTING
+Plan: 1 of 4
 **Milestone:** v1
 **Phase:** 1 — Fundacao
 **Plan:** 01-01, 01-04 COMPLETE; 01-02, 01-03 pending
-**Status:** Executing Phase 01 — Plan 4 of 4 done
+**Status:** Executing Phase 02
 
 **Progress:**
 
-[██████████] 100%
+[██████░░░░] 63%
 [█████░░░░░] 50% (Phase 01: 2/4 plans complete)
 Phase 1 [████████████████████] 50%  Fundacao (2/4 plans)
 Phase 2 [                    ] 0%   Wiki & Conteudo
@@ -69,6 +69,7 @@ Overall: 0/6 phases complete
 | Phase 01-fundacao P03 | 10min | 2 tasks | 88 files |
 | Phase 01-fundacao P04 | 15min | 1 tasks | 2 files |
 | Phase 01-fundacao P02 | 45min | 3 tasks | 12 files |
+| Phase 02-wiki-conteudo P01 | 25min | 2 tasks | 18 files |
 
 ## Accumulated Context
 
@@ -87,6 +88,9 @@ Overall: 0/6 phases complete
 | Fandom MediaWiki API para scraping | Mais confiavel que HTML scraping, suporta paginacao via cmcontinue |
 | wiki.gg skip quando robots.txt desabilita | Fandom confirmado como fonte primaria |
 | published:false sempre em writeMdx | D-09: todo conteudo requer revisao manual antes de publicar |
+| Pagefind sobre Fuse.js para busca | Build-time index, binary search, sub-100ms, escala para 10k+ paginas |
+| extractInfobox antes de wikitextToMarkdown | Preserva dados estruturados antes que templates sejam removidos |
+| --skip-existing no scraper | Protege conteudo MDX editado manualmente (D-09) |
 
 ### Research Flags (validate before phase)
 
@@ -110,7 +114,7 @@ None.
 
 **To resume:** Run `/gsd:execute-phase 01-fundacao` to continue with Plan 02 (layout + homepage UI) and Plan 03 (scraping pipeline).
 
-**Stopped at:** Completed 01-02-PLAN.md
+**Stopped at:** Completed 02-01-PLAN.md
 
 **Context needed:**
 
