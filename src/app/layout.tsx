@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import { Inter, Cinzel } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
-import Topbar from "@/components/layout/Topbar";
-import Sidebar from "@/components/layout/Sidebar";
-import Footer from "@/components/layout/Footer";
-import { SidebarProvider } from "@/components/layout/SidebarContext";
+// Components hidden until launch
+// import Topbar from "@/components/layout/Topbar";
+// import Sidebar from "@/components/layout/Sidebar";
+// import Footer from "@/components/layout/Footer";
+// import { SidebarProvider } from "@/components/layout/SidebarContext";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -61,18 +62,7 @@ export default function RootLayout({
           enableSystem={false}
           disableTransitionOnChange
         >
-          <SidebarProvider>
-            <div className="flex min-h-screen">
-              <Sidebar />
-              <div className="flex flex-1 flex-col min-w-0">
-                <Topbar />
-                <main className="flex-1">
-                  {children}
-                </main>
-                <Footer />
-              </div>
-            </div>
-          </SidebarProvider>
+          {children}
         </ThemeProvider>
       </body>
     </html>
