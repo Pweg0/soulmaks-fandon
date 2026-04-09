@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 02-01-PLAN.md
-last_updated: "2026-04-09T02:57:39.697Z"
+stopped_at: Completed 02-03-PLAN.md
+last_updated: "2026-04-09T03:14:56.589Z"
 progress:
   total_phases: 6
   completed_phases: 1
   total_plans: 8
-  completed_plans: 5
-  percent: 63
+  completed_plans: 6
+  percent: 75
 ---
 
 # Project State: SoulmaskBR — Guia & Server List
@@ -39,7 +39,7 @@ Plan: 1 of 4
 
 **Progress:**
 
-[██████░░░░] 63%
+[████████░░] 75%
 [█████░░░░░] 50% (Phase 01: 2/4 plans complete)
 Phase 1 [████████████████████] 50%  Fundacao (2/4 plans)
 Phase 2 [                    ] 0%   Wiki & Conteudo
@@ -70,6 +70,7 @@ Overall: 0/6 phases complete
 | Phase 01-fundacao P04 | 15min | 1 tasks | 2 files |
 | Phase 01-fundacao P02 | 45min | 3 tasks | 12 files |
 | Phase 02-wiki-conteudo P01 | 25min | 2 tasks | 18 files |
+| Phase 02-wiki-conteudo P03 | 9 | 2 tasks | 7 files |
 
 ## Accumulated Context
 
@@ -91,6 +92,8 @@ Overall: 0/6 phases complete
 | Pagefind sobre Fuse.js para busca | Build-time index, binary search, sub-100ms, escala para 10k+ paginas |
 | extractInfobox antes de wikitextToMarkdown | Preserva dados estruturados antes que templates sejam removidos |
 | --skip-existing no scraper | Protege conteudo MDX editado manualmente (D-09) |
+| next-mdx-remote/rsc para renderizacao MDX | RSC-compatible, peerDep react>=16, compativel com Next.js 16; @next/mdx nao suporta strings em runtime |
+| Stubs v1 para skills/builds/nos da mascara | Dados estruturados nao estao no frontmatter ainda; MDX body cuida das descricoes ate pipeline de dados futuro |
 
 ### Research Flags (validate before phase)
 
@@ -114,7 +117,7 @@ None.
 
 **To resume:** Run `/gsd:execute-phase 01-fundacao` to continue with Plan 02 (layout + homepage UI) and Plan 03 (scraping pipeline).
 
-**Stopped at:** Completed 02-01-PLAN.md
+**Stopped at:** Completed 02-03-PLAN.md
 
 **Context needed:**
 

@@ -46,12 +46,12 @@ Plans:
   3. Visitante acessa a pagina de um item e ve stats, receita de crafting e localizacao de obtencao — tudo em pt-BR
   4. Visitante acessa a pagina de uma mascara e ve habilidades, builds recomendados e descricao — tudo em pt-BR
   5. Visitante acessa a secao de patch notes e le a traducao da ultima atualizacao do jogo
-**Plans:** 4 plans
+**Plans:** 2/4 plans executed
 
 Plans:
 - [x] 02-01-PLAN.md — Content foundation: types, MDX utilities, scraper enhancement, shadcn components
 - [ ] 02-02-PLAN.md — Category listing pages with filter bar, grid/table toggle, pagination
-- [ ] 02-03-PLAN.md — Item and mask detail pages with card expansivo and accordion sections
+- [x] 02-03-PLAN.md — Item and mask detail pages with card expansivo and accordion sections
 - [ ] 02-04-PLAN.md — Pagefind search integration + patch notes pages + visual verification
 
 **UI hint**: yes
@@ -106,7 +106,7 @@ Plans:
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Fundacao | 4/4 | Complete   | 2026-04-09 |
-| 2. Wiki & Conteudo | 0/4 | Planning complete | - |
+| 2. Wiki & Conteudo | 2/4 | In Progress|  |
 | 3. SEO & Performance | 0/? | Not started | - |
 | 4. Server List — Consulta | 0/? | Not started | - |
 | 5. Server List — Cadastro | 0/? | Not started | - |
