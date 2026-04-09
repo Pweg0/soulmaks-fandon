@@ -4,6 +4,7 @@
  * Includes prev/next navigation sorted by date descending.
  */
 
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { MDXRemote } from 'next-mdx-remote/rsc'
@@ -38,6 +39,34 @@ function sortPatches(patches: ContentItem<PatchFrontmatter>[]) {
     if (bDate) return 1
     return a.frontmatter.title.localeCompare(b.frontmatter.title, 'pt-BR')
   })
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<PageParams>
+}): Promise<Metadata> {
+  const { slug } = await params
+  const data = await getContentBySlug('patches', slug)
+  if (!data) return {}
+
+  const frontmatter = data.frontmatter as unknown as PatchFrontmatter
+  const title = frontmatter.title
+  const version = frontmatter.version
+  const description = `Patch ${version ?? ''} do Soulmask — notas de atualização traduzidas para português.`.trim()
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `/wiki/patch-notes/${slug}`,
+    },
+    openGraph: {
+      title,
+      description,
+      type: 'article',
+    },
+  }
 }
 
 export async function generateStaticParams(): Promise<PageParams[]> {

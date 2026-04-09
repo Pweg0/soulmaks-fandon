@@ -22,8 +22,25 @@ const cinzel = Cinzel({
 });
 
 export const metadata: Metadata = {
-  title: "SoulmaskBR — Guia & Server List",
-  description: "O guia completo de Soulmask em português",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://soulmaskbr.com'),
+  title: {
+    template: 'SoulmaskBR | %s',
+    default: 'SoulmaskBR — Guia & Server List',
+  },
+  description: 'O guia completo de Soulmask em português — itens, máscaras, guias e patch notes',
+  openGraph: {
+    siteName: 'SoulmaskBR',
+    locale: 'pt_BR',
+    type: 'website',
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'SoulmaskBR — Guia & Server List',
+      },
+    ],
+  },
 };
 
 export default function RootLayout({

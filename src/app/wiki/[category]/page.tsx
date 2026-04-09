@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { Suspense } from 'react'
@@ -30,6 +31,27 @@ const CATEGORY_SUBTITLES: Record<string, string> = {
 
 interface PageProps {
   params: Promise<{ category: string }>
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { category } = await params
+  if (!CATEGORY_MAP[category]) return {}
+
+  const title = CATEGORY_LABELS[category] ?? category
+  const description = CATEGORY_SUBTITLES[category] ?? `Conteúdo de ${title} no Soulmask em português.`
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `/wiki/${category}`,
+    },
+    openGraph: {
+      title,
+      description,
+      type: 'website',
+    },
+  }
 }
 
 export default async function CategoryPage({ params }: PageProps) {

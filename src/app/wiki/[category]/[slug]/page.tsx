@@ -7,6 +7,7 @@
  * - Renders raw MDX string from gray-matter at build time with custom components
  */
 
+import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 
@@ -37,6 +38,53 @@ export const revalidate = 86400
 type PageParams = {
   category: string
   slug: string
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<PageParams>
+}): Promise<Metadata> {
+  const { category, slug } = await params
+  if (!CATEGORY_MAP[category]) return {}
+
+  const data = await getContentBySlug(CATEGORY_MAP[category], slug)
+  if (!data || !data.frontmatter.published) return {}
+
+  const { frontmatter } = data
+  const title = frontmatter.title
+
+  let description: string
+  if (category === 'itens') {
+    description = `${title} — stats, receita de crafting e localização no Soulmask. Guia em português.`
+  } else if (category === 'mascaras') {
+    description = `Máscara ${title} no Soulmask — habilidades, builds recomendados e dicas. Guia pt-BR.`
+  } else if (category === 'guias') {
+    description = `${title} — guia completo para jogadores de Soulmask em português.`
+  } else {
+    description = `${title} — conteúdo completo sobre Soulmask em português.`
+  }
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `/wiki/${category}/${slug}`,
+    },
+    openGraph: {
+      title,
+      description,
+      type: 'article',
+      images: [
+        {
+          url: '/og-default.png',
+          width: 1200,
+          height: 630,
+          alt: `${title} - SoulmaskBR`,
+        },
+      ],
+    },
+  }
 }
 
 export async function generateStaticParams(): Promise<PageParams[]> {

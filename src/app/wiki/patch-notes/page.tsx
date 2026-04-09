@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { getAllContent } from '@/lib/content'
 import type { PatchFrontmatter } from '@/types/content'
@@ -22,6 +23,14 @@ import {
 } from '@/components/ui/pagination'
 
 export const revalidate = 86400
+
+export const metadata: Metadata = {
+  title: 'Patch Notes',
+  description: 'Notas de atualização do Soulmask traduzidas para português brasileiro.',
+  alternates: {
+    canonical: '/wiki/patch-notes',
+  },
+}
 
 const PATCHES_PER_PAGE = 10
 
