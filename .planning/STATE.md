@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 02-02-PLAN.md
-last_updated: "2026-04-09T03:19:05.078Z"
+stopped_at: Completed 02-04-PLAN.md (awaiting human-verify checkpoint)
+last_updated: "2026-04-09T03:44:50.102Z"
 progress:
   total_phases: 6
-  completed_phases: 1
+  completed_phases: 2
   total_plans: 8
-  completed_plans: 7
-  percent: 88
+  completed_plans: 8
+  percent: 100
 ---
 
 # Project State: SoulmaskBR — Guia & Server List
@@ -39,7 +39,7 @@ Plan: 1 of 4
 
 **Progress:**
 
-[█████████░] 88%
+[██████████] 100%
 [█████░░░░░] 50% (Phase 01: 2/4 plans complete)
 Phase 1 [████████████████████] 50%  Fundacao (2/4 plans)
 Phase 2 [                    ] 0%   Wiki & Conteudo
@@ -72,6 +72,7 @@ Overall: 0/6 phases complete
 | Phase 02-wiki-conteudo P01 | 25min | 2 tasks | 18 files |
 | Phase 02-wiki-conteudo P03 | 9 | 2 tasks | 7 files |
 | Phase 02-wiki-conteudo P02 | 35min | 2 tasks | 6 files |
+| Phase 02-wiki-conteudo P04 | 35min | 2 tasks | 9 files |
 
 ## Accumulated Context
 
@@ -95,6 +96,9 @@ Overall: 0/6 phases complete
 | --skip-existing no scraper | Protege conteudo MDX editado manualmente (D-09) |
 | next-mdx-remote/rsc para renderizacao MDX | RSC-compatible, peerDep react>=16, compativel com Next.js 16; @next/mdx nao suporta strings em runtime |
 | Stubs v1 para skills/builds/nos da mascara | Dados estruturados nao estao no frontmatter ainda; MDX body cuida das descricoes ate pipeline de dados futuro |
+| Pagefind @ts-ignore + webpackIgnore para import | pagefind.js e um asset pos-build, nao um modulo TS; import dinamico com /* webpackIgnore: true */ |
+| Rota dedicada /wiki/patch-notes/[slug] | Separada de [category]/[slug] para suportar navegacao prev/next entre patches sem contaminar rota generica |
+| CategoryListing em Suspense boundary | useSearchParams() exige Suspense em Next.js 16 para prerendering estatico; adicionado em [category]/page.tsx |
 
 ### Research Flags (validate before phase)
 
@@ -118,7 +122,7 @@ None.
 
 **To resume:** Run `/gsd:execute-phase 01-fundacao` to continue with Plan 02 (layout + homepage UI) and Plan 03 (scraping pipeline).
 
-**Stopped at:** Completed 02-02-PLAN.md
+**Stopped at:** Completed 02-04-PLAN.md (awaiting human-verify checkpoint)
 
 **Context needed:**
 

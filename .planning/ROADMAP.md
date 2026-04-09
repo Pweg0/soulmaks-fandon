@@ -8,7 +8,7 @@
 ## Phases
 
 - [x] **Phase 1: Fundacao** - Stack configurado, banco de dados, auth e pipeline de scraping prontos para uso (completed 2026-04-09)
-- [ ] **Phase 2: Wiki & Conteudo** - Conteudo navegavel em pt-BR com busca, paginas individuais e patch notes
+- [x] **Phase 2: Wiki & Conteudo** - Conteudo navegavel em pt-BR com busca, paginas individuais e patch notes (completed 2026-04-09)
 - [ ] **Phase 3: SEO & Performance** - Site otimizado para buscadores brasileiros com Core Web Vitals aprovados
 - [ ] **Phase 4: Server List — Consulta** - Qualquer visitante pode explorar, filtrar e votar em servidores listados
 - [ ] **Phase 5: Server List — Cadastro** - Donos de servidor podem criar conta, cadastrar e gerenciar seus servidores
@@ -46,13 +46,13 @@ Plans:
   3. Visitante acessa a pagina de um item e ve stats, receita de crafting e localizacao de obtencao — tudo em pt-BR
   4. Visitante acessa a pagina de uma mascara e ve habilidades, builds recomendados e descricao — tudo em pt-BR
   5. Visitante acessa a secao de patch notes e le a traducao da ultima atualizacao do jogo
-**Plans:** 3/4 plans executed
+**Plans:** 4/4 plans complete
 
 Plans:
 - [x] 02-01-PLAN.md — Content foundation: types, MDX utilities, scraper enhancement, shadcn components
 - [x] 02-02-PLAN.md — Category listing pages with filter bar, grid/table toggle, pagination
 - [x] 02-03-PLAN.md — Item and mask detail pages with card expansivo and accordion sections
-- [ ] 02-04-PLAN.md — Pagefind search integration + patch notes pages + visual verification
+- [x] 02-04-PLAN.md — Pagefind search integration + patch notes pages + visual verification
 
 **UI hint**: yes
 
@@ -106,7 +106,7 @@ Plans:
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Fundacao | 4/4 | Complete   | 2026-04-09 |
-| 2. Wiki & Conteudo | 3/4 | In Progress|  |
+| 2. Wiki & Conteudo | 4/4 | Complete   | 2026-04-09 |
 | 3. SEO & Performance | 0/? | Not started | - |
 | 4. Server List — Consulta | 0/? | Not started | - |
 | 5. Server List — Cadastro | 0/? | Not started | - |

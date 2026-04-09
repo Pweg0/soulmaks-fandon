@@ -10,10 +10,10 @@ Requirements for initial release. Each maps to roadmap phases.
 ### Wiki / Conteúdo
 
 - [x] **WIKI-01**: Usuário pode navegar pelo conteúdo organizado por categorias (itens/crafting, máscaras/skills, guias/tutoriais, patch notes)
-- [ ] **WIKI-02**: Usuário pode buscar conteúdo por texto livre com resultados relevantes
+- [x] **WIKI-02**: Usuário pode buscar conteúdo por texto livre com resultados relevantes
 - [x] **WIKI-03**: Usuário pode acessar página individual de cada item com detalhes completos (stats, receitas, localização)
 - [x] **WIKI-04**: Usuário pode acessar página individual de cada máscara com habilidades e builds
-- [ ] **WIKI-05**: Usuário pode ler patch notes e notícias traduzidas para pt-BR
+- [x] **WIKI-05**: Usuário pode ler patch notes e notícias traduzidas para pt-BR
 - [x] **WIKI-06**: Todo conteúdo é original em pt-BR (reescrito da wiki oficial, não copiado)
 
 ### Server List
@@ -101,10 +101,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | UI-02 | Phase 1 | Complete |
 | UI-03 | Phase 1 | Complete |
 | WIKI-01 | Phase 2 | Complete |
-| WIKI-02 | Phase 2 | Pending |
+| WIKI-02 | Phase 2 | Complete |
 | WIKI-03 | Phase 2 | Complete |
 | WIKI-04 | Phase 2 | Complete |
-| WIKI-05 | Phase 2 | Pending |
+| WIKI-05 | Phase 2 | Complete |
 | WIKI-06 | Phase 2 | Complete |
 | SEO-01 | Phase 3 | Pending |
 | SEO-02 | Phase 3 | Pending |
