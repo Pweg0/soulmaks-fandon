@@ -29,7 +29,7 @@
 **Plans:** 4 plans
 
 Plans:
-- [ ] 01-01-PLAN.md — Bootstrap Next.js 16 + Supabase clients + auth middleware + Vitest
+- [x] 01-01-PLAN.md — Bootstrap Next.js 16 + Supabase clients + auth middleware + Vitest
 - [ ] 01-02-PLAN.md — Dark tribal theme + layout shell + homepage (topbar, sidebar, footer, hero, cards)
 - [ ] 01-03-PLAN.md — Scraping pipeline (Fandom + wiki.gg) with MDX output
 - [ ] 01-04-PLAN.md — Cron endpoint for server status verification via TCP ping
