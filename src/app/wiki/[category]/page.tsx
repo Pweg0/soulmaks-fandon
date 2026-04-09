@@ -25,9 +25,27 @@ export function generateStaticParams() {
 
 const CATEGORY_SUBTITLES: Record<string, string> = {
   itens: 'Todos os itens, materiais e receitas do Soulmask',
-  mascaras: 'Todas as máscaras, habilidades e builds do Soulmask',
-  guias: 'Guias completos para iniciantes e jogadores avançados',
-  'patch-notes': 'Traduções das atualizações do Soulmask em português',
+  mascaras: 'Todas as mascaras, habilidades e builds do Soulmask',
+  armas: 'Espadas, arcos, lanças, martelos e mais',
+  armaduras: 'Armaduras, capacetes, botas e luvas',
+  escudos: 'Escudos para defesa em combate',
+  ferramentas: 'Ferramentas de coleta e construcao',
+  construcoes: 'Estruturas, paredes e pecas de construcao',
+  moveis: 'Moveis, decoracao e itens de base',
+  bancadas: 'Bancadas de trabalho e estacoes de crafting',
+  criaturas: 'Animais, predadores e criaturas domesticaveis',
+  chefes: 'Chefes, elites e inimigos poderosos',
+  localizacoes: 'Mapas, regioes e pontos de interesse',
+  recursos: 'Recursos naturais e materiais de coleta',
+  comidas: 'Comidas, bebidas e alimentos',
+  medicamentos: 'Medicamentos e itens de cura',
+  cristais: 'Cristais e pedras preciosas',
+  minerais: 'Minerais e minerios',
+  municoes: 'Municoes para arcos e balistas',
+  proficiencias: 'Arvores de habilidades e proficiencias',
+  modificacoes: 'Modificacoes e melhorias de equipamento',
+  guias: 'Guias completos para iniciantes e jogadores avancados',
+  'patch-notes': 'Traducoes das atualizacoes do Soulmask em portugues',
 }
 
 interface PageProps {

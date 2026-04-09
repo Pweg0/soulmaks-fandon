@@ -1,19 +1,37 @@
 import Link from "next/link"
-import { Sword, Drama, BookOpen, Newspaper } from "lucide-react"
+import { Sword, Shield, Drama, Hammer, Globe, Package, BookOpen, Newspaper } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 
 const categories = [
   {
     icon: Sword,
-    title: "Itens & Crafting",
-    description: "Recursos, armas, armaduras e receitas de crafting",
+    title: "Armas & Equipamento",
+    description: "Espadas, arcos, armaduras, escudos e modificacoes",
+    href: "/wiki/armas",
+  },
+  {
+    icon: Package,
+    title: "Itens & Recursos",
+    description: "Materiais, cristais, comidas, medicamentos e crafting",
     href: "/wiki/itens",
   },
   {
     icon: Drama,
     title: "Mascaras & Skills",
-    description: "Habilidades, builds e guias de mascaras",
+    description: "Todas as mascaras, habilidades e builds",
     href: "/wiki/mascaras",
+  },
+  {
+    icon: Hammer,
+    title: "Construcao",
+    description: "Estruturas, moveis, bancadas e decoracao de base",
+    href: "/wiki/construcoes",
+  },
+  {
+    icon: Globe,
+    title: "Mundo & Criaturas",
+    description: "Criaturas, chefes, localizacoes e exploração",
+    href: "/wiki/criaturas",
   },
   {
     icon: BookOpen,
@@ -21,18 +39,12 @@ const categories = [
     description: "Guias para iniciantes e estrategias avancadas",
     href: "/wiki/guias",
   },
-  {
-    icon: Newspaper,
-    title: "Patch Notes",
-    description: "Ultimas atualizacoes e notas de versao",
-    href: "/wiki/patch-notes",
-  },
 ]
 
 export default function CategoryCards() {
   return (
     <div className="mx-auto max-w-[1280px] px-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {categories.map(({ icon: Icon, title, description, href }) => (
           <Link key={href} href={href} className="group block">
             <Card

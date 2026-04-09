@@ -2,7 +2,17 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { BookOpen, Server, GraduationCap, FileText } from "lucide-react"
+import { useState } from "react"
+import {
+  Sword,
+  Package,
+  Drama,
+  Hammer,
+  Globe,
+  BookOpen,
+  Server,
+  ChevronDown,
+} from "lucide-react"
 import {
   Sheet,
   SheetContent,
@@ -11,43 +21,82 @@ import {
 } from "@/components/ui/sheet"
 import { useSidebar } from "./SidebarContext"
 import { cn } from "@/lib/utils"
+import { SIDEBAR_NAV } from "@/types/content"
 
-const navLinks = [
-  { href: "/wiki/itens", label: "Wiki", icon: BookOpen },
-  { href: "/servidores", label: "Servidores", icon: Server },
-  { href: "/wiki/guias", label: "Guias", icon: GraduationCap },
-  { href: "/wiki/patch-notes", label: "Patch Notes", icon: FileText },
-]
+const ICON_MAP: Record<string, React.ElementType> = {
+  Sword,
+  Package,
+  Drama,
+  Hammer,
+  Globe,
+  BookOpen,
+}
 
-function NavLink({
-  href,
-  label,
-  icon: Icon,
-  isActive,
-  onClick,
+function NavGroup({
+  group,
+  pathname,
+  onLinkClick,
 }: {
-  href: string
-  label: string
-  icon: React.ElementType
-  isActive: boolean
-  onClick?: () => void
+  group: (typeof SIDEBAR_NAV)[number]
+  pathname: string
+  onLinkClick?: () => void
 }) {
+  const isAnyChildActive = group.children.some(
+    (child) => pathname === child.href || pathname.startsWith(child.href + "/")
+  )
+  const [isOpen, setIsOpen] = useState(isAnyChildActive)
+  const Icon = ICON_MAP[group.icon] || BookOpen
+
   return (
-    <Link
-      href={href}
-      onClick={onClick}
-      aria-current={isActive ? "page" : undefined}
-      className={cn(
-        "flex items-center gap-3 px-4 py-2.5 text-sm rounded-md transition-colors duration-100",
-        "border-l-2",
-        isActive
-          ? "text-primary border-primary bg-muted"
-          : "text-muted-foreground border-transparent hover:text-foreground hover:bg-muted"
+    <div>
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className={cn(
+          "flex items-center justify-between w-full px-4 py-2.5 text-sm rounded-md transition-colors duration-100",
+          isAnyChildActive
+            ? "text-primary"
+            : "text-muted-foreground hover:text-foreground hover:bg-muted"
+        )}
+      >
+        <span className="flex items-center gap-3">
+          <Icon size={18} aria-hidden="true" />
+          <span className="font-medium">{group.label}</span>
+        </span>
+        <ChevronDown
+          size={14}
+          className={cn(
+            "transition-transform duration-200",
+            isOpen && "rotate-180"
+          )}
+          aria-hidden="true"
+        />
+      </button>
+      {isOpen && (
+        <div className="ml-7 mt-0.5 flex flex-col gap-0.5 border-l border-border pl-3">
+          {group.children.map((child) => {
+            const isActive =
+              pathname === child.href ||
+              pathname.startsWith(child.href + "/")
+            return (
+              <Link
+                key={child.href}
+                href={child.href}
+                onClick={onLinkClick}
+                aria-current={isActive ? "page" : undefined}
+                className={cn(
+                  "block px-3 py-1.5 text-sm rounded-md transition-colors duration-100",
+                  isActive
+                    ? "text-primary bg-muted"
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                )}
+              >
+                {child.label}
+              </Link>
+            )
+          })}
+        </div>
       )}
-    >
-      <Icon size={18} aria-hidden="true" />
-      <span>{label}</span>
-    </Link>
+    </div>
   )
 }
 
@@ -56,14 +105,32 @@ function NavList({ onLinkClick }: { onLinkClick?: () => void }) {
 
   return (
     <nav className="flex flex-col gap-1 p-4">
-      {navLinks.map(({ href, label, icon }) => (
-        <NavLink
-          key={href}
-          href={href}
-          label={label}
-          icon={icon}
-          isActive={pathname === href || pathname.startsWith(href + "/")}
-          onClick={onLinkClick}
+      {/* Server list — standalone link */}
+      <Link
+        href="/servidores"
+        onClick={onLinkClick}
+        aria-current={pathname === "/servidores" ? "page" : undefined}
+        className={cn(
+          "flex items-center gap-3 px-4 py-2.5 text-sm rounded-md transition-colors duration-100",
+          pathname === "/servidores" || pathname.startsWith("/servidores/")
+            ? "text-primary bg-muted"
+            : "text-muted-foreground hover:text-foreground hover:bg-muted"
+        )}
+      >
+        <Server size={18} aria-hidden="true" />
+        <span className="font-medium">Servidores</span>
+      </Link>
+
+      {/* Divider */}
+      <div className="h-px bg-border my-2" />
+
+      {/* Expandable category groups */}
+      {SIDEBAR_NAV.map((group) => (
+        <NavGroup
+          key={group.label}
+          group={group}
+          pathname={pathname}
+          onLinkClick={onLinkClick}
         />
       ))}
     </nav>
@@ -75,30 +142,29 @@ export default function Sidebar() {
 
   return (
     <>
-      {/* Desktop sidebar — always visible on lg+ */}
-      <aside className="hidden lg:flex flex-col w-60 shrink-0 bg-card border-r border-border sticky top-0 h-screen">
+      {/* Desktop sidebar */}
+      <aside className="hidden lg:flex flex-col w-60 shrink-0 bg-card border-r border-border sticky top-0 h-screen overflow-y-auto">
         <div className="h-14 flex items-center px-4 border-b border-border">
-          <span
+          <Link
+            href="/"
             className="text-primary font-bold text-base leading-none"
             style={{ fontFamily: "var(--font-cinzel), Georgia, serif" }}
           >
-            Menu
-          </span>
+            SoulmaskBR
+          </Link>
         </div>
-        <div className="flex-1 overflow-y-auto">
-          <NavList />
-        </div>
+        <NavList />
       </aside>
 
-      {/* Mobile sidebar — Sheet */}
+      {/* Mobile sidebar */}
       <Sheet open={isOpen} onOpenChange={setIsOpen}>
-        <SheetContent side="left" className="bg-card border-r border-border p-0 w-64">
+        <SheetContent side="left" className="bg-card border-r border-border p-0 w-72 overflow-y-auto">
           <SheetHeader className="h-14 flex flex-row items-center px-4 border-b border-border">
             <SheetTitle
               className="text-primary font-bold text-base"
               style={{ fontFamily: "var(--font-cinzel), Georgia, serif" }}
             >
-              Menu
+              SoulmaskBR
             </SheetTitle>
           </SheetHeader>
           <NavList onLinkClick={() => setIsOpen(false)} />
