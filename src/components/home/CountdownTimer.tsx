@@ -63,7 +63,7 @@ export default function CountdownTimer() {
         {["--", "--", "--"].map((v, i) => (
           <div key={i} className="flex flex-col items-center">
             <span
-              className="text-6xl md:text-8xl font-bold text-primary tabular-nums"
+              className="text-6xl md:text-8xl font-bold text-amber-500 tabular-nums"
               style={{ fontFamily: "var(--font-cinzel), Georgia, serif" }}
             >
               {v}
@@ -80,7 +80,7 @@ export default function CountdownTimer() {
     return (
       <div className="text-center">
         <h2
-          className="text-4xl md:text-6xl font-bold text-primary animate-pulse"
+          className="text-4xl md:text-6xl font-bold text-amber-500 animate-pulse"
           style={{ fontFamily: "var(--font-cinzel), Georgia, serif" }}
         >
           ESTAMOS NO AR!
@@ -99,13 +99,13 @@ export default function CountdownTimer() {
         <div key={label} className="flex flex-col items-center gap-2">
           <div className="relative">
             <span
-              className="text-6xl md:text-8xl lg:text-9xl font-bold text-primary tabular-nums leading-none"
+              className="text-6xl md:text-8xl lg:text-9xl font-bold text-amber-500 tabular-nums leading-none"
               style={{ fontFamily: "var(--font-cinzel), Georgia, serif" }}
             >
               {pad(value)}
             </span>
           </div>
-          <span className="text-xs md:text-sm text-muted-foreground tracking-[0.3em] uppercase">
+          <span className="text-xs md:text-sm text-neutral-500 tracking-[0.3em] uppercase">
             {label}
           </span>
         </div>
