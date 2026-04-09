@@ -21,7 +21,7 @@ export default function Home() {
           Soulmask 1.0
         </h1>
 
-        <div className="border border-white/20 rounded-lg px-10 py-8 md:px-16 md:py-10">
+        <div className="border border-white/20 rounded-2xl w-[340px] md:w-[520px] lg:w-[600px] h-[120px] md:h-[160px] lg:h-[180px] flex items-center justify-center">
           <CountdownTimer />
         </div>
 
