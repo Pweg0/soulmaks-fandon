@@ -26,13 +26,13 @@
   3. O script de scraping local extrai conteudo estruturado da wiki oficial e armazena no banco sem erros
   4. O cron externo (cron-job.org) chama o endpoint de verificacao de servidores e a resposta e registrada no log
   5. A interface exibe menus de navegacao, busca acessivel e tema visual survival/tribal — tudo escrito em portugues brasileiro
-**Plans:** 4 plans
+**Plans:** 2/4 plans executed
 
 Plans:
 - [x] 01-01-PLAN.md — Bootstrap Next.js 16 + Supabase clients + auth middleware + Vitest
 - [ ] 01-02-PLAN.md — Dark tribal theme + layout shell + homepage (topbar, sidebar, footer, hero, cards)
 - [ ] 01-03-PLAN.md — Scraping pipeline (Fandom + wiki.gg) with MDX output
-- [ ] 01-04-PLAN.md — Cron endpoint for server status verification via TCP ping
+- [x] 01-04-PLAN.md — Cron endpoint for server status verification via TCP ping
 
 **UI hint**: yes
 
@@ -98,7 +98,7 @@ Plans:
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Fundacao | 0/4 | Planned | - |
+| 1. Fundacao | 2/4 | In Progress|  |
 | 2. Wiki & Conteudo | 0/? | Not started | - |
 | 3. SEO & Performance | 0/? | Not started | - |
 | 4. Server List — Consulta | 0/? | Not started | - |
