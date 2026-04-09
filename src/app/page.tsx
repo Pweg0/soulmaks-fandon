@@ -33,9 +33,9 @@ export default function Home() {
         <div className="w-12 h-px bg-neutral-800 mt-4" />
 
         {/* Protest — wide and compact */}
-        <div className="w-full max-w-5xl border border-red-900/30 bg-red-950/5 rounded px-6 py-4 space-y-3">
+        <div className="w-full max-w-5xl border border-green-700/40 bg-green-950/10 rounded px-6 py-4 space-y-3">
           <p
-            className="text-sm font-bold text-red-500 text-center uppercase tracking-widest"
+            className="text-sm font-bold text-yellow-400 text-center uppercase tracking-widest"
             style={{ fontFamily: "var(--font-cinzel), Georgia, serif" }}
           >
             #SoulmaskNeedsSA
@@ -44,19 +44,19 @@ export default function Home() {
           <div className="flex flex-col md:flex-row gap-4 md:gap-8">
             {/* English */}
             <div className="flex-1 space-y-1">
-              <p className="text-[9px] text-red-400/40 uppercase tracking-widest">EN</p>
+              <p className="text-[9px] text-green-500/50 uppercase tracking-widest">EN</p>
               <p className="text-xs text-neutral-500 leading-relaxed">
-                The SA community buys your game, fills your servers, creates content — yet plays on NA/EU with <span className="text-red-400 font-bold">200+ ms</span>. ARK, Rust, Conan, Palworld all have SA servers. <strong className="text-white">Soulmask doesn&apos;t. Unacceptable.</strong> <span className="text-red-400 font-bold">Give us SA servers.</span>
+                The SA community buys your game, fills your servers, creates content — yet plays on NA/EU with <span className="text-yellow-400 font-bold">200+ ms</span>. ARK, Rust, Conan, Palworld all have SA servers. <strong className="text-white">Soulmask doesn&apos;t. Unacceptable.</strong> <span className="text-green-400 font-bold">Give us SA servers.</span>
               </p>
             </div>
 
-            <div className="hidden md:block w-px bg-red-900/20" />
+            <div className="hidden md:block w-px bg-green-800/30" />
 
             {/* Portuguese */}
             <div className="flex-1 space-y-1">
-              <p className="text-[9px] text-red-400/40 uppercase tracking-widest">PT</p>
+              <p className="text-[9px] text-green-500/50 uppercase tracking-widest">PT</p>
               <p className="text-xs text-neutral-500 leading-relaxed">
-                A comunidade SA compra o jogo, lota os servidores, cria conteudo — e joga em NA/EU com <span className="text-red-400 font-bold">200+ ms</span>. ARK, Rust, Conan, Palworld tem servidores SA. <strong className="text-white">Soulmask nao tem. Inaceitavel.</strong> <span className="text-red-400 font-bold">Nos deem servidores SA.</span>
+                A comunidade SA compra o jogo, lota os servidores, cria conteudo — e joga em NA/EU com <span className="text-yellow-400 font-bold">200+ ms</span>. ARK, Rust, Conan, Palworld tem servidores SA. <strong className="text-white">Soulmask nao tem. Inaceitavel.</strong> <span className="text-green-400 font-bold">Nos deem servidores SA.</span>
               </p>
             </div>
           </div>
