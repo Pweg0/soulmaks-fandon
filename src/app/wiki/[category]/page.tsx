@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { Suspense } from 'react'
 import { getAllContent, getContentCategories } from '@/lib/content'
 import { CATEGORY_MAP, CATEGORY_LABELS } from '@/types/content'
+import { webPageSchema } from '@/lib/jsonld'
 import {
   Breadcrumb,
   BreadcrumbList,
@@ -54,6 +55,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 }
 
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://soulmaskbr.com'
+
 export default async function CategoryPage({ params }: PageProps) {
   const { category } = await params
 
@@ -73,6 +76,13 @@ export default async function CategoryPage({ params }: PageProps) {
 
   return (
     <div data-pagefind-ignore className="max-w-[1280px] mx-auto px-6 pb-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema(
+          CATEGORY_LABELS[category] ?? category,
+          `${BASE_URL}/wiki/${category}`
+        )) }}
+      />
       {/* Breadcrumb */}
       <Breadcrumb className="mt-6 mb-0">
         <BreadcrumbList>

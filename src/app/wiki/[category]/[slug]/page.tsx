@@ -14,6 +14,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc'
 import { getAllContent, getContentBySlug } from '@/lib/content'
 import { CATEGORY_MAP, CATEGORY_LABELS, type ItemFrontmatter } from '@/types/content'
 import { useMDXComponents } from '@/mdx-components'
+import { breadcrumbSchema, articleSchema } from '@/lib/jsonld'
 
 import { ItemHeroCard } from '@/components/wiki/ItemHeroCard'
 import { MaskHeroCard } from '@/components/wiki/MaskHeroCard'
@@ -34,6 +35,8 @@ import {
 // Static generation config
 export const dynamicParams = false
 export const revalidate = 86400
+
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://soulmaskbr.com'
 
 type PageParams = {
   category: string
@@ -145,6 +148,27 @@ export default async function WikiDetailPage({
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
+
+      {/* JSON-LD structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema([
+          { name: 'Inicio', url: BASE_URL },
+          { name: 'Wiki', url: `${BASE_URL}/wiki` },
+          { name: categoryLabel, url: `${BASE_URL}/wiki/${category}` },
+          { name: frontmatter.title, url: `${BASE_URL}/wiki/${category}/${slug}` },
+        ])) }}
+      />
+      {category === 'guias' && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema(
+            frontmatter.title,
+            `${frontmatter.title} — guia completo para jogadores de Soulmask em portugues.`,
+            `${BASE_URL}/wiki/${category}/${slug}`
+          )) }}
+        />
+      )}
 
       {/* Hero Card — category-specific */}
       {category === 'itens' && <ItemHeroCard item={frontmatter} />}

@@ -12,6 +12,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc'
 import { getAllContent, getContentBySlug } from '@/lib/content'
 import type { ContentItem, PatchFrontmatter } from '@/types/content'
 import { useMDXComponents } from '@/mdx-components'
+import { breadcrumbSchema } from '@/lib/jsonld'
 import { Badge } from '@/components/ui/badge'
 import {
   Breadcrumb,
@@ -24,6 +25,8 @@ import {
 
 export const dynamicParams = false
 export const revalidate = 86400
+
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://soulmaskbr.com'
 
 type PageParams = { slug: string }
 
@@ -144,6 +147,17 @@ export default async function PatchDetailPage({
           </BreadcrumbList>
         </Breadcrumb>
       </nav>
+
+      {/* JSON-LD structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema([
+          { name: 'Inicio', url: BASE_URL },
+          { name: 'Wiki', url: `${BASE_URL}/wiki` },
+          { name: 'Patch Notes', url: `${BASE_URL}/wiki/patch-notes` },
+          { name: frontmatter.title, url: `${BASE_URL}/wiki/patch-notes/${slug}` },
+        ])) }}
+      />
 
       {/* Header */}
       <header className="mb-8">
