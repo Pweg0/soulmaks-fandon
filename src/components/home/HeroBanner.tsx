@@ -1,13 +1,29 @@
+'use client'
+
 import Link from "next/link"
 import { Search } from "lucide-react"
+import { useRef, useState } from "react"
 import { Input } from "@/components/ui/input"
+import SearchDropdown from "@/components/wiki/SearchDropdown"
 
 export default function HeroBanner() {
+  const [searchQuery, setSearchQuery] = useState("")
+  const [isSearchOpen, setIsSearchOpen] = useState(false)
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  function handleClickOutside(e: React.MouseEvent) {
+    if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+      setIsSearchOpen(false)
+    }
+  }
+
   return (
+    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
     <section
       className="relative w-full h-[320px] lg:h-[480px] flex items-center justify-center overflow-hidden"
       role="img"
       aria-label="Arte do Soulmask"
+      onMouseDown={handleClickOutside}
     >
       {/* Background gradient simulating game art */}
       <div
@@ -42,7 +58,7 @@ export default function HeroBanner() {
         </p>
 
         {/* Search */}
-        <div className="relative w-full max-w-[560px]">
+        <div ref={containerRef} className="relative w-full max-w-[560px]">
           <Search
             className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground"
             size={16}
@@ -53,6 +69,21 @@ export default function HeroBanner() {
             placeholder="Buscar itens, mascaras, guias..."
             className="pl-9 h-11 focus-visible:border-primary focus-visible:ring-primary/30 transition-colors duration-150"
             aria-label="Buscar conteudo"
+            value={searchQuery}
+            onChange={(e) => {
+              setSearchQuery(e.target.value)
+              if (e.target.value.trim()) setIsSearchOpen(true)
+              else setIsSearchOpen(false)
+            }}
+            onFocus={() => {
+              if (searchQuery.trim()) setIsSearchOpen(true)
+            }}
+          />
+          <SearchDropdown
+            query={searchQuery}
+            isOpen={isSearchOpen}
+            onClose={() => setIsSearchOpen(false)}
+            maxWidth="560px"
           />
         </div>
 

@@ -99,4 +99,8 @@
   html {
     @apply font-sans;
   }
+  mark {
+    background: rgba(237, 160, 29, 0.2);
+    color: hsl(var(--primary));
+  }
 }
