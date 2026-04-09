@@ -7,7 +7,7 @@
 
 ## Phases
 
-- [ ] **Phase 1: Fundacao** - Stack configurado, banco de dados, auth e pipeline de scraping prontos para uso
+- [x] **Phase 1: Fundacao** - Stack configurado, banco de dados, auth e pipeline de scraping prontos para uso (completed 2026-04-09)
 - [ ] **Phase 2: Wiki & Conteudo** - Conteudo navegavel em pt-BR com busca, paginas individuais e patch notes
 - [ ] **Phase 3: SEO & Performance** - Site otimizado para buscadores brasileiros com Core Web Vitals aprovados
 - [ ] **Phase 4: Server List — Consulta** - Qualquer visitante pode explorar, filtrar e votar em servidores listados
@@ -26,11 +26,11 @@
   3. O script de scraping local extrai conteudo estruturado da wiki oficial e armazena no banco sem erros
   4. O cron externo (cron-job.org) chama o endpoint de verificacao de servidores e a resposta e registrada no log
   5. A interface exibe menus de navegacao, busca acessivel e tema visual survival/tribal — tudo escrito em portugues brasileiro
-**Plans:** 3/4 plans executed
+**Plans:** 4/4 plans complete
 
 Plans:
 - [x] 01-01-PLAN.md — Bootstrap Next.js 16 + Supabase clients + auth middleware + Vitest
-- [ ] 01-02-PLAN.md — Dark tribal theme + layout shell + homepage (topbar, sidebar, footer, hero, cards)
+- [x] 01-02-PLAN.md — Dark tribal theme + layout shell + homepage (topbar, sidebar, footer, hero, cards)
 - [x] 01-03-PLAN.md — Scraping pipeline (Fandom + wiki.gg) with MDX output
 - [x] 01-04-PLAN.md — Cron endpoint for server status verification via TCP ping
 
@@ -98,7 +98,7 @@ Plans:
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Fundacao | 3/4 | In Progress|  |
+| 1. Fundacao | 4/4 | Complete   | 2026-04-09 |
 | 2. Wiki & Conteudo | 0/? | Not started | - |
 | 3. SEO & Performance | 0/? | Not started | - |
 | 4. Server List — Consulta | 0/? | Not started | - |

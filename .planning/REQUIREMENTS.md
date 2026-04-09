@@ -49,9 +49,9 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Interface
 
-- [ ] **UI-01**: Interface 100% em português brasileiro
-- [ ] **UI-02**: Navegação clara com menu de categorias e busca acessível
-- [ ] **UI-03**: Tema visual adequado ao universo de Soulmask (survival/tribal)
+- [x] **UI-01**: Interface 100% em português brasileiro
+- [x] **UI-02**: Navegação clara com menu de categorias e busca acessível
+- [x] **UI-03**: Tema visual adequado ao universo de Soulmask (survival/tribal)
 
 ## v2 Requirements
 
@@ -97,9 +97,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | INFR-03 | Phase 1 | Complete |
 | INFR-04 | Phase 1 | Complete |
 | INFR-05 | Phase 1 | Complete |
-| UI-01 | Phase 1 | Pending |
-| UI-02 | Phase 1 | Pending |
-| UI-03 | Phase 1 | Pending |
+| UI-01 | Phase 1 | Complete |
+| UI-02 | Phase 1 | Complete |
+| UI-03 | Phase 1 | Complete |
 | WIKI-01 | Phase 2 | Pending |
 | WIKI-02 | Phase 2 | Pending |
 | WIKI-03 | Phase 2 | Pending |
