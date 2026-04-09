@@ -6,6 +6,14 @@ export interface ScrapedContent {
   body: string
   sourceUrl: string
   gameVersion?: string
+  // Phase 2 additions (D-08):
+  tags?: string[]
+  tier?: string
+  difficulty?: string
+  image?: string
+  stats?: Record<string, string | number>
+  crafting?: Array<{ item: string; quantity: number }>
+  location?: string[]
 }
 
 export interface ScrapedItem extends ScrapedContent {
@@ -28,4 +36,5 @@ export interface ScraperOptions {
   dryRun: boolean
   contentDir: string
   delayMs: number
+  skipExisting?: boolean
 }

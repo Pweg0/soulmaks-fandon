@@ -8,6 +8,7 @@ import { fileURLToPath } from 'url'
 const args = process.argv.slice(2)
 const dryRun = args.includes('--dry-run')
 const fandomOnly = args.includes('--fandom-only')
+const skipExisting = args.includes('--skip-existing')
 
 // Support both CommonJS (__dirname) and ESM (import.meta.url) environments
 const scriptDir = typeof __dirname !== 'undefined'
@@ -20,6 +21,7 @@ const options: ScraperOptions = {
   dryRun,
   contentDir,
   delayMs: 1500,
+  skipExisting,
 }
 
 async function main() {

@@ -78,6 +78,89 @@ function slugify(title: string): string {
 }
 
 /**
+ * Known stat param names to extract from infobox into stats object.
+ * All other params besides image/type/name go into stats if unrecognized.
+ */
+const INFOBOX_STAT_PARAMS = new Set([
+  'weight', 'damage', 'durability', 'defense', 'speed', 'range',
+  'armor', 'hp', 'stamina', 'attack', 'magic', 'fire_damage',
+  'water_damage', 'earth_damage', 'wind_damage', 'critical',
+])
+
+/**
+ * Extracts structured data from Fandom wikitext infobox templates.
+ * Supports {{Infobox item|...}}, {{Infobox mask|...}}, {{Item|...}}, etc.
+ * Must be called before wikitextToMarkdown strips the templates.
+ *
+ * Returns a partial ScrapedContent with only the fields that were found.
+ */
+export function extractInfobox(wikitext: string): Partial<Pick<ScrapedContent, 'image' | 'stats' | 'crafting' | 'location' | 'tier' | 'tags'>> {
+  const result: Partial<Pick<ScrapedContent, 'image' | 'stats' | 'crafting' | 'location' | 'tier' | 'tags'>> = {}
+
+  // Match infobox template — handles {{Infobox item|...}} and similar patterns
+  // Uses a regex that captures everything up to the closing }}
+  const infoboxMatch = wikitext.match(/\{\{(?:Infobox\s+\w+|Item|Mask|Tool|Weapon|Armor|Resource)\s*\|([^}]+)\}\}/i)
+
+  if (!infoboxMatch) {
+    return result
+  }
+
+  const paramString = infoboxMatch[1]
+
+  // Parse |key=value pairs
+  const params: Record<string, string> = {}
+  const paramParts = paramString.split('|')
+  for (const part of paramParts) {
+    const eqIdx = part.indexOf('=')
+    if (eqIdx === -1) continue
+    const key = part.slice(0, eqIdx).trim().toLowerCase()
+    const value = part.slice(eqIdx + 1).trim()
+    if (key && value) {
+      params[key] = value
+    }
+  }
+
+  // Extract image
+  if (params['image']) {
+    result.image = params['image']
+  }
+
+  // Extract tier/rarity
+  if (params['tier'] || params['rarity']) {
+    result.tier = params['tier'] ?? params['rarity']
+  }
+
+  // Extract stats from known param names and any numeric values
+  const stats: Record<string, string | number> = {}
+  for (const [key, value] of Object.entries(params)) {
+    if (key === 'image' || key === 'name' || key === 'type' || key === 'tier' || key === 'rarity') {
+      continue
+    }
+    if (INFOBOX_STAT_PARAMS.has(key) || /^\d+(\.\d+)?$/.test(value)) {
+      stats[key] = value
+    }
+  }
+  if (Object.keys(stats).length > 0) {
+    result.stats = stats
+  }
+
+  // Extract location from == Location == or == Found in == sections
+  const locationMatch = wikitext.match(/==\s*(?:Location|Found in|Locations)\s*==\s*\n([\s\S]*?)(?:\n==|$)/i)
+  if (locationMatch) {
+    const locationText = locationMatch[1]
+    const locations = locationText
+      .split('\n')
+      .map((line) => line.replace(/^[*#\s-]+/, '').trim())
+      .filter((line) => line.length > 0 && !line.startsWith('{{') && !line.startsWith('[['))
+    if (locations.length > 0) {
+      result.location = locations
+    }
+  }
+
+  return result
+}
+
+/**
  * Converts wikitext to a simplified Markdown-compatible format.
  * Strips wiki templates, converts links, removes complex markup.
  */
@@ -122,6 +205,7 @@ function wikitextToMarkdown(wikitext: string, title: string): string {
 
 /**
  * Transforms a page title and its wikitext into a ScrapedContent object.
+ * Extracts structured data from infobox BEFORE stripping templates.
  */
 export function parseItemPage(
   title: string,
@@ -129,6 +213,8 @@ export function parseItemPage(
   category: ScrapedContent['category'],
   sourceUrl: string
 ): ScrapedContent {
+  // Extract infobox data first, before templates are stripped
+  const infoboxData = extractInfobox(wikitext)
   const body = wikitextToMarkdown(wikitext, title)
   return {
     title,
@@ -137,6 +223,7 @@ export function parseItemPage(
     body,
     sourceUrl,
     gameVersion: 'unknown',
+    ...infoboxData,
   }
 }
 
@@ -197,7 +284,7 @@ export async function scrapeFandom(options: ScraperOptions): Promise<void> {
 
         const sourceUrl = `https://soulmask.fandom.com/wiki/${encodeURIComponent(title.replace(/ /g, '_'))}`
         const item = parseItemPage(title, wikitext, mapping.category, sourceUrl)
-        await writeMdx(item, options.contentDir)
+        await writeMdx(item, options.contentDir, { skipExisting: options.skipExisting })
         scraped++
         console.log(`  Scraped: ${title} -> ${item.slug}.mdx`)
       } catch (err) {
