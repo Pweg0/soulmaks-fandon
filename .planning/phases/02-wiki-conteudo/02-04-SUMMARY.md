@@ -86,7 +86,7 @@ completed: 2026-04-08
 
 1. **Task 1: SearchDropdown + Topbar + HeroBanner** - `b269de3` (feat)
 2. **Task 2: Patch notes listing and detail pages** - `34fa629` (feat)
-3. **Task 3: Visual verification** - pending human approval (checkpoint)
+3. **Task 3: Visual verification** - `approved` (human-verify checkpoint passed)
 
 ## Files Created/Modified
 
