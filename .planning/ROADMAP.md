@@ -65,7 +65,11 @@ Plans:
   2. O arquivo sitemap.xml esta acessivel e lista todas as paginas publicas do site com URLs canonicas corretas
   3. Paginas de itens e guias exibem JSON-LD valido (VideoGame, HowTo ou FAQPage) ao testar no Rich Results Test do Google
   4. O site atinge pontuacao verde no PageSpeed Insights Mobile (Core Web Vitals aprovados) em paginas de wiki
-**Plans**: TBD
+**Plans:** 2 plans
+
+Plans:
+- [ ] 03-01-PLAN.md — Meta tags (title template, descriptions, canonical, OG) + sitemap.xml + robots.txt
+- [ ] 03-02-PLAN.md — JSON-LD structured data (VideoGame, BreadcrumbList, Article) + PageSpeed verification
 
 ### Phase 4: Server List — Consulta
 **Goal**: Qualquer visitante pode descobrir servidores de Soulmask, filtrar por criterios e ver status em tempo real sem precisar de conta
@@ -107,11 +111,11 @@ Plans:
 |-------|----------------|--------|-----------|
 | 1. Fundacao | 4/4 | Complete   | 2026-04-09 |
 | 2. Wiki & Conteudo | 4/4 | Complete   | 2026-04-09 |
-| 3. SEO & Performance | 0/? | Not started | - |
+| 3. SEO & Performance | 0/2 | Planning complete | - |
 | 4. Server List — Consulta | 0/? | Not started | - |
 | 5. Server List — Cadastro | 0/? | Not started | - |
 | 6. Monetizacao Premium | 0/? | Not started | - |
 
 ---
 *Roadmap created: 2026-04-08*
-*Last updated: 2026-04-09 after Phase 2 planning*
+*Last updated: 2026-04-09 after Phase 3 planning*
