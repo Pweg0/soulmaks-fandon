@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import CountdownTimer from "@/components/home/CountdownTimer"
+import VisitorCounter from "@/components/home/VisitorCounter"
 
 export const metadata: Metadata = {
   title: 'Soulmask 1.0 — Lancamento Oficial',
@@ -62,6 +63,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <VisitorCounter />
     </div>
   )
 }
