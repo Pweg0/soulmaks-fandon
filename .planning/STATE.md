@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: planning
-stopped_at: Completed 02-04-PLAN.md — Phase 02 wiki-conteudo complete
-last_updated: "2026-04-09T17:01:06.450Z"
+status: executing
+stopped_at: Completed 03-01-PLAN.md — SEO metadata, sitemap, robots, og-default.png
+last_updated: "2026-04-09T17:51:55.212Z"
 progress:
   total_phases: 6
   completed_phases: 2
-  total_plans: 8
-  completed_plans: 8
-  percent: 100
+  total_plans: 10
+  completed_plans: 9
+  percent: 90
 ---
 
 # Project State: SoulmaskBR — Guia & Server List
@@ -24,31 +24,30 @@ progress:
 
 **Core Value:** Ser a referência central em português para jogadores de Soulmask — reunindo todo o conhecimento do jogo e conectando a comunidade através da server list.
 
-**Current Focus:** Phase 02 — wiki-conteudo
+**Current Focus:** Phase 03 — seo-performance
 
 ---
 
 ## Current Position
 
-Phase: 02 (wiki-conteudo) — EXECUTING
-Plan: 1 of 4
+Phase: 03 (seo-performance) — EXECUTING
+Plan: 2 of 2
 **Milestone:** v1
 **Phase:** 3
-**Plan:** Not started
-**Status:** Ready to plan
+**Plan:** 1 complete, 1 remaining (03-02)
+**Status:** Executing Phase 03
 
 **Progress:**
 
-[██████████] 100%
-[█████░░░░░] 50% (Phase 01: 2/4 plans complete)
-Phase 1 [████████████████████] 50%  Fundacao (2/4 plans)
-Phase 2 [                    ] 0%   Wiki & Conteudo
-Phase 3 [                    ] 0%   SEO & Performance
+[█████████░] 90%
+Phase 1 [████████████████████] 100% Fundacao (4/4 plans)
+Phase 2 [████████████████████] 100% Wiki & Conteudo (4/4 plans)
+Phase 3 [██████████          ] 50%  SEO & Performance (1/2 plans)
 Phase 4 [                    ] 0%   Server List — Consulta
 Phase 5 [                    ] 0%   Server List — Cadastro
 Phase 6 [                    ] 0%   Monetizacao Premium
 
-Overall: 0/6 phases complete
+Overall: 2/6 phases complete
 
 ```
 
@@ -74,6 +73,7 @@ Overall: 0/6 phases complete
 | Phase 02-wiki-conteudo P02 | 35min | 2 tasks | 6 files |
 | Phase 02-wiki-conteudo P04 | 35min | 2 tasks | 9 files |
 | Phase 02-wiki-conteudo P04 | 35min | 3 tasks | 9 files |
+| Phase 03-seo-performance P01 | 35min | 3 tasks | 11 files |
 
 ## Accumulated Context
 
@@ -100,6 +100,9 @@ Overall: 0/6 phases complete
 | Pagefind @ts-ignore + webpackIgnore para import | pagefind.js e um asset pos-build, nao um modulo TS; import dinamico com /* webpackIgnore: true */ |
 | Rota dedicada /wiki/patch-notes/[slug] | Separada de [category]/[slug] para suportar navegacao prev/next entre patches sem contaminar rota generica |
 | CategoryListing em Suspense boundary | useSearchParams() exige Suspense em Next.js 16 para prerendering estatico; adicionado em [category]/page.tsx |
+| Static og:image para v1 | public/og-default.png 1200x630; dynamic ImageResponse deferred per D-07 |
+| NEXT_PUBLIC_SITE_URL com fallback | process.env.NEXT_PUBLIC_SITE_URL ?? 'https://soulmaskbr.com' em metadataBase e sitemap |
+| patch-notes filtrado do loop CATEGORY_MAP no sitemap | URL pattern /wiki/patch-notes/[slug] e diferente de [category]/[slug]; enumerado separadamente |
 
 ### Research Flags (validate before phase)
 
@@ -123,7 +126,7 @@ None.
 
 **To resume:** Run `/gsd:execute-phase 01-fundacao` to continue with Plan 02 (layout + homepage UI) and Plan 03 (scraping pipeline).
 
-**Stopped at:** Completed 02-04-PLAN.md — Phase 02 wiki-conteudo complete
+**Stopped at:** Completed 03-01-PLAN.md — SEO metadata, sitemap, robots, og-default.png
 
 **Context needed:**
 

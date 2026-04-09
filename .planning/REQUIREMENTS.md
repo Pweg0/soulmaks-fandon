@@ -34,8 +34,8 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### SEO / Performance
 
-- [ ] **SEO-01**: Cada página tem meta title, description e canonical URL únicos e otimizados para pt-BR
-- [ ] **SEO-02**: Sitemap.xml gerado automaticamente com todas as páginas
+- [x] **SEO-01**: Cada página tem meta title, description e canonical URL únicos e otimizados para pt-BR
+- [x] **SEO-02**: Sitemap.xml gerado automaticamente com todas as páginas
 - [ ] **SEO-03**: Schema.org JSON-LD em páginas relevantes (VideoGame, HowTo, FAQPage, BreadcrumbList)
 - [ ] **SEO-04**: Design responsivo mobile-first com boa performance (Core Web Vitals)
 
@@ -106,8 +106,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | WIKI-04 | Phase 2 | Complete |
 | WIKI-05 | Phase 2 | Complete |
 | WIKI-06 | Phase 2 | Complete |
-| SEO-01 | Phase 3 | Pending |
-| SEO-02 | Phase 3 | Pending |
+| SEO-01 | Phase 3 | Complete |
+| SEO-02 | Phase 3 | Complete |
 | SEO-03 | Phase 3 | Pending |
 | SEO-04 | Phase 3 | Pending |
 | SRVL-01 | Phase 4 | Pending |
