@@ -21,7 +21,9 @@ export default function Home() {
           Soulmask 1.0
         </h1>
 
-        <CountdownTimer />
+        <div className="border border-white/20 rounded-lg px-10 py-8 md:px-16 md:py-10">
+          <CountdownTimer />
+        </div>
 
         <p className="text-xs text-neutral-600">
           Hoje as <span className="text-amber-500">21:00</span> BRT
