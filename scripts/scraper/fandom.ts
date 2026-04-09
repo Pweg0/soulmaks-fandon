@@ -233,10 +233,60 @@ interface CategoryMap {
 }
 
 const CATEGORY_MAPPINGS: CategoryMap[] = [
+  // Equipamento
+  { fandomCategory: 'Category:Weapons', category: 'weapons' },
+  { fandomCategory: 'Category:Armor', category: 'armor' },
+  { fandomCategory: 'Category:Shields', category: 'shields' },
+  { fandomCategory: 'Category:Tools', category: 'tools' },
+  { fandomCategory: 'Category:Item Mod', category: 'item-mods' },
+  // Itens & Recursos
   { fandomCategory: 'Category:Items', category: 'items' },
+  { fandomCategory: 'Category:Crystals', category: 'crystals' },
+  { fandomCategory: 'Category:Minerals', category: 'minerals' },
+  { fandomCategory: 'Category:Food', category: 'food' },
+  { fandomCategory: 'Category:Medicines', category: 'medicines' },
+  { fandomCategory: 'Category:Ammo', category: 'ammo' },
+  // Máscaras
   { fandomCategory: 'Category:Masks', category: 'masks' },
+  { fandomCategory: 'Category:Proficiencies', category: 'proficiencies' },
+  // Construção
+  { fandomCategory: 'Category:Buildings', category: 'buildings' },
+  { fandomCategory: 'Category:Furniture', category: 'furniture' },
+  { fandomCategory: 'Category:Workbenches', category: 'workbenches' },
+  // Mundo
+  { fandomCategory: 'Category:Creatures', category: 'creatures' },
+  { fandomCategory: 'Category:Bosses', category: 'bosses' },
+  { fandomCategory: 'Category:Locations', category: 'locations' },
+  // Guias
   { fandomCategory: 'Category:Guides', category: 'guides' },
 ]
+
+/**
+ * Fetches the main image URL for a wiki page via the MediaWiki pageimages API.
+ * Returns null if no image is found.
+ */
+async function getPageImage(title: string): Promise<string | null> {
+  try {
+    const response = await http.get(FANDOM_API, {
+      params: {
+        action: 'query',
+        titles: title,
+        prop: 'pageimages',
+        format: 'json',
+        pithumbsize: 300,
+        origin: '*',
+      },
+    })
+    const data = response.data as {
+      query: { pages: Record<string, { thumbnail?: { source: string } }> }
+    }
+    const pages = data.query?.pages ?? {}
+    const page = Object.values(pages)[0]
+    return page?.thumbnail?.source ?? null
+  } catch {
+    return null
+  }
+}
 
 /**
  * Main Fandom scraper entry point.
@@ -284,6 +334,14 @@ export async function scrapeFandom(options: ScraperOptions): Promise<void> {
 
         const sourceUrl = `https://soulmask.fandom.com/wiki/${encodeURIComponent(title.replace(/ /g, '_'))}`
         const item = parseItemPage(title, wikitext, mapping.category, sourceUrl)
+
+        // Fetch image via pageimages API if not already found from infobox
+        if (!item.image) {
+          const imageUrl = await getPageImage(title)
+          if (imageUrl) {
+            item.image = imageUrl
+          }
+        }
         await writeMdx(item, options.contentDir, { skipExisting: options.skipExisting })
         scraped++
         console.log(`  Scraped: ${title} -> ${item.slug}.mdx`)

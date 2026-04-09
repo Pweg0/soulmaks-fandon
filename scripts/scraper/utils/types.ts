@@ -1,7 +1,7 @@
 export interface ScrapedContent {
   title: string
   slug: string
-  category: 'items' | 'masks' | 'guides' | 'patches'
+  category: 'items' | 'masks' | 'guides' | 'patches' | 'weapons' | 'armor' | 'shields' | 'tools' | 'buildings' | 'furniture' | 'workbenches' | 'creatures' | 'bosses' | 'locations' | 'resources' | 'food' | 'medicines' | 'crystals' | 'minerals' | 'ammo' | 'proficiencies' | 'item-mods'
   subcategory?: string
   body: string
   sourceUrl: string
