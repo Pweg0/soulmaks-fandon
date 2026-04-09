@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "test": "vitest run --reporter=verbose",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "scrape": "npx tsx scripts/scraper/index.ts",
+    "scrape:dry": "npx tsx scripts/scraper/index.ts --dry-run"
   },
   "dependencies": {
     "@base-ui/react": "^1.3.0",
@@ -42,6 +44,7 @@
     "@vitejs/plugin-react": "^6.0.1",
     "jsdom": "^29.0.2",
     "tailwindcss": "^4",
+    "tsx": "^4.21.0",
     "typescript": "^5",
     "vitest": "^4.1.3"
   }
