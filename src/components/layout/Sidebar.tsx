@@ -13,10 +13,10 @@ import { useSidebar } from "./SidebarContext"
 import { cn } from "@/lib/utils"
 
 const navLinks = [
-  { href: "/wiki", label: "Wiki", icon: BookOpen },
+  { href: "/wiki/itens", label: "Wiki", icon: BookOpen },
   { href: "/servidores", label: "Servidores", icon: Server },
-  { href: "/guias", label: "Guias", icon: GraduationCap },
-  { href: "/patch-notes", label: "Patch Notes", icon: FileText },
+  { href: "/wiki/guias", label: "Guias", icon: GraduationCap },
+  { href: "/wiki/patch-notes", label: "Patch Notes", icon: FileText },
 ]
 
 function NavLink({

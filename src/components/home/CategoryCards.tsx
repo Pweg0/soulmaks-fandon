@@ -19,13 +19,13 @@ const categories = [
     icon: BookOpen,
     title: "Guias & Tutoriais",
     description: "Guias para iniciantes e estrategias avancadas",
-    href: "/guias",
+    href: "/wiki/guias",
   },
   {
     icon: Newspaper,
     title: "Patch Notes",
     description: "Ultimas atualizacoes e notas de versao",
-    href: "/patch-notes",
+    href: "/wiki/patch-notes",
   },
 ]
 

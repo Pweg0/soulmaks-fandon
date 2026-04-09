@@ -89,7 +89,7 @@ export default function HeroBanner() {
 
         {/* CTA */}
         <Link
-          href="/wiki"
+          href="/wiki/itens"
           className="inline-flex items-center justify-center rounded-lg h-11 px-8 text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-150"
         >
           Explorar a Wiki
