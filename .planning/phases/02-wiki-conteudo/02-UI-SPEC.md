@@ -45,12 +45,14 @@ The following are locked from Phase 1. Executors must not override these values.
 | Token | Value | Source |
 |-------|-------|--------|
 | `--background` | `hsl(0 0% 6%)` — `#0f0f0f` | Phase 1 globals.css |
-| `--foreground` | `hsl(40 15% 85%)` — `#f5f0e8` | Phase 1 globals.css |
+| `--foreground` | `hsl(40 15% 85%)` — `#dedbd3` | Phase 1 globals.css |
 | `--card` | `hsl(0 0% 9%)` — `#171717` | Phase 1 globals.css |
-| `--primary` | `hsl(38 85% 52%)` — `#c9973a` tribal gold | Phase 1 globals.css |
-| `--muted-foreground` | `hsl(40 8% 55%)` | Phase 1 globals.css |
+| `--primary` | `hsl(38 85% 52%)` — `#eda01d` tribal gold | Phase 1 globals.css |
+| `--muted` | `hsl(0 0% 13%)` — `#212121` | Phase 1 globals.css |
+| `--muted-foreground` | `hsl(40 8% 55%)` — `#958f83` | Phase 1 globals.css |
 | `--border` | `hsl(0 0% 16%)` — `#292929` | Phase 1 globals.css |
 | `--destructive` | `hsl(0 84% 60%)` | Phase 1 globals.css |
+| `--tier-a` | `hsl(200 60% 35%)` steel blue | Phase 2 addition — A-tier badge border only |
 | Spacing scale | xs:4 sm:8 md:16 lg:24 xl:32 2xl:48 3xl:64 | Phase 1 UI-SPEC |
 | Body | Inter 16px / 400 / 1.5 | Phase 1 UI-SPEC |
 | Label | Inter 14px / 400 / 1.4 | Phase 1 UI-SPEC |
@@ -82,7 +84,7 @@ Exceptions:
 
 ## Typography
 
-Inherited from Phase 1. Phase 2 adds one display sub-role for item stat values.
+Inherited from Phase 1. No new sizes or weights are added in Phase 2.
 
 | Role | Size | Weight | Line Height | Font | Usage |
 |------|------|--------|-------------|------|-------|
@@ -90,40 +92,46 @@ Inherited from Phase 1. Phase 2 adds one display sub-role for item stat values.
 | Label | 14px | 400 | 1.4 | Inter | Filter labels, table headers, badge text, breadcrumb items, pagination numbers |
 | Heading | 24px | 700 | 1.2 | Cinzel | Page titles, section headings (Stats, Crafting, Localização) |
 | Display | 40px | 700 | 1.1 | Cinzel | Category page hero titles (e.g. "Itens & Crafting") — same as Phase 1 hero |
-| Stat Value | 20px | 700 | 1.2 | Inter | Numeric stat values in item stat blocks (e.g. damage numbers, weight) |
 
-**Stat Value** uses Inter bold (not Cinzel) because stat numbers are data, not headings. This is the only addition to the type scale. No other new sizes are introduced.
+**Stat values** (e.g. damage numbers, weight values in item stat blocks) use **Body bold**: Inter 16px / weight 700 / line-height 1.5. This is not a new type scale entry — it reuses the Body size with bold weight. No 20px size is introduced.
 
-**Total weights used:** 400 (regular) + 700 (bold) only — no change from Phase 1.
+**Total weights used:** 400 (regular) + 700 (bold) only — no change from Phase 1. Weight 600/semibold is not used anywhere in Phase 2.
 
 ---
 
 ## Color
 
-Inherited from Phase 1. Phase 2 adds two semantic surface uses.
+Inherited from Phase 1. Phase 2 adds two semantic surface uses and one new CSS variable.
 
 | Role | CSS Variable | Hex Reference | Usage |
 |------|-------------|---------------|-------|
 | Dominant (60%) | `--background` | `#0f0f0f` | Page background |
 | Secondary (30%) | `--card` | `#171717` | Item cards, filter bar, sidebar, stat block background |
-| Accent (10%) | `--primary` | `#c9973a` | See reserved list below |
+| Accent (10%) | `--primary` | `#eda01d` | See reserved list below |
 | Tier badge surface | `--secondary` | `hsl(25 50% 22%)` dark brown | Tier/difficulty badge background only |
-| Muted surface | `--muted` | `hsl(0 0% 13%)` | Skeleton loaders, empty table rows, collapible section backgrounds |
+| Muted surface | `--muted` | `#212121` | Skeleton loaders, empty table rows, collapsible section backgrounds |
+| Tier A border | `--tier-a` | `hsl(200 60% 35%)` | A-tier mask badge border only |
 | Destructive | `--destructive` | red | Not used in Phase 2 |
 
-**Accent (`#c9973a`) reserved for — Phase 2 additions:**
+**Accent (`--primary`) reserved for — Phase 2 additions:**
 - Active filter pill/tag indicator (left border or bottom underline)
 - Grid/Table view toggle active indicator
-- Search result highlight (matched term background: `rgba(201, 151, 58, 0.2)`)
+- Search result highlight (matched term background: `rgba(237,160,29,0.2)`)
 - Breadcrumb current page text
 - Patch note version badge border
-- Item page section divider lines (subtle horizontal rule: `1px solid rgba(201,151,58,0.25)`)
+- Item page section divider lines (subtle horizontal rule: `1px solid rgba(237,160,29,0.25)`)
 
 **Accent is NOT used for:** row hover backgrounds, all badge backgrounds, pagination button backgrounds.
 
-**New semantic color — Tier badges:**
+**New CSS variable — `--tier-a`:**
+```css
+--tier-a: hsl(200 60% 35%);
+```
+Add to `:root` in `globals.css`. Used exclusively for A-tier mask badge border color.
+
+**Tier badge semantics:**
 - S/Legendary: `--primary` gold border, `--secondary` background
-- A: `hsl(200 60% 35%)` (steel blue) border — reserved for mask tier only
+- A: `--tier-a` (steel blue) border, `--secondary` background
 - B and below: `--border` (gray) border, `--muted` background
 
 ---
@@ -155,7 +163,7 @@ Layout: full-width within main content area (max 1280px, 24px horizontal padding
 **Grid view — item card:**
 - Component: shadcn `card` with custom content
 - Dimensions: auto height, min-height 120px
-- Layout (top to bottom): category badge (top-left) | item image (64x64px, centered, object-contain) | item name (Inter 16px semibold — exception: 600 weight for card titles only in grid, not added to global type scale) | tier badge (if applicable)
+- Layout (top to bottom): category badge (top-left) | item image (64x64px, centered, object-contain) | item name (Inter 16px bold — weight 700) | tier badge (if applicable)
 - Hover: border color `--primary`, `box-shadow: 0 0 0 1px var(--primary)`, 150ms ease — same as Phase 1 category cards
 - Click: navigates to item page
 
@@ -192,7 +200,7 @@ Layout: two-zone on desktop, single-column on mobile.
 **Item Hero Card ("card expansivo"):**
 - Component: shadcn `card`, full-width
 - Background: `--card`
-- Border: `1px --border`, with `box-shadow: 0 0 0 1px rgba(201,151,58,0.15)` (subtle gold glow)
+- Border: `1px --border`, with `box-shadow: 0 0 0 1px rgba(237,160,29,0.15)` (subtle gold glow)
 - Left zone: item image 160x160px, `object-contain`, background `--muted`, border-radius `--radius-md`
 - Right zone: item name (Cinzel 24px bold), category badge, tier badge, description (Inter 16px, 1.5 line-height)
 - Mobile: image above text (stacks vertically), image 96x96px
@@ -200,8 +208,8 @@ Layout: two-zone on desktop, single-column on mobile.
 **Stats Block:**
 - Component: shadcn `accordion` (open by default)
 - Heading: "Estatísticas" (Cinzel 24px)
-- Layout inside: CSS grid 2-col (label | value), Inter 14px labels, Inter 20px bold stat values
-- Section divider: `1px solid rgba(201,151,58,0.25)` between stat groups
+- Layout inside: CSS grid 2-col (label | value), Inter 14px labels, Inter 16px bold (weight 700) stat values — Body bold role, not a new type scale entry
+- Section divider: `1px solid rgba(237,160,29,0.25)` between stat groups
 
 **Crafting Recipe:**
 - Component: shadcn `accordion` (open by default)
@@ -222,7 +230,7 @@ Layout: two-zone on desktop, single-column on mobile.
 **MDX Body:**
 - Prose styles: `max-width: none`, Inter 16px, 1.5 line-height
 - `h2` within MDX: Cinzel 24px bold (mapped to Heading role)
-- `h3` within MDX: Inter 16px bold (600 weight — MDX-only exception, not added to global type scale)
+- `h3` within MDX: Inter 16px bold (weight 700) — distinct from body through weight alone, no new scale entry
 - `a` within MDX: `--primary` color, underline on hover, 150ms
 - `code` inline: `--muted` background, Inter 14px, `border-radius: 4px`, 4px padding horizontal
 - `blockquote`: left border 2px `--primary`, `--muted` background, 16px padding
@@ -306,7 +314,7 @@ Search is not a dedicated page (D-11). Results appear inline in topbar and hero 
 - Overlay: floating panel below topbar input, full width of input, max-height 400px, `overflow-y: auto`
 - Background: `--card`, border `1px --border`, border-radius `--radius-lg`, `box-shadow: 0 8px 24px rgba(0,0,0,0.5)`
 - Result item: Inter 16px title + Inter 14px muted category label, 44px min-height, hover `--muted` background
-- Matched term highlight: `background: rgba(201,151,58,0.2)`, `color: --primary`
+- Matched term highlight: `background: rgba(237,160,29,0.2)`, `color: --primary`
 - No results: "Nenhum resultado encontrado" (Inter 16px muted, centered)
 - Keyboard: Arrow keys navigate results; Enter navigates to page; Escape closes
 - Loading state: skeleton rows (shadcn `skeleton`, 2 rows, 44px height each)
@@ -332,6 +340,7 @@ Search is not a dedicated page (D-11). Results appear inline in topbar and hero 
 - Inactive state: background `--muted`, icon color `--muted-foreground`
 - Toggle persists in URL query param `?view=grid` or `?view=table` (for shareable URLs)
 - Transition: 100ms background color change
+- Tooltip: shadcn `tooltip` on each button — `"Visualização em grade"` (grid) / `"Visualização em tabela"` (table); delay 500ms; position above button
 
 ### Filter tabs (subcategory)
 - Component: shadcn `tabs` (pill style, not underline)
@@ -415,6 +424,8 @@ All copy in Portuguese Brazilian (pt-BR). Inherits Phase 1 strings. New strings 
 | Search — placeholder (topbar, inherited) | Buscar itens, máscaras, guias... |
 | Breadcrumb: home | Início |
 | Breadcrumb: wiki root | Wiki |
+| Tooltip: grid view toggle | Visualização em grade |
+| Tooltip: table view toggle | Visualização em tabela |
 | Empty state — category (no content) heading | Nenhum conteúdo publicado ainda |
 | Empty state — category body | Este conteúdo está sendo traduzido e revisado. Volte em breve. |
 | Empty state — search no results body | Tente outros termos ou navegue pelas categorias. |
@@ -422,6 +433,7 @@ All copy in Portuguese Brazilian (pt-BR). Inherits Phase 1 strings. New strings 
 | 404 — item not found | Item não encontrado |
 | 404 — item not found body | Este item pode não existir ou ainda não foi publicado. |
 | 404 — mask not found | Máscara não encontrada |
+| 404 — mask not found body | Esta máscara pode não existir ou ainda não foi publicada. |
 | Unpublished content (admin only, not shown to visitors) | (not visible to visitors — published:false items excluded from routes) |
 
 **Destructive actions in Phase 2:** None. Phase 2 is read-only content — no user-generated content, no deletions.
@@ -453,7 +465,7 @@ Inherits Phase 1. Phase 2 additions:
 | `tabs` | shadcn | Filter subcategories, mask builds |
 | `select` | shadcn | Sort dropdown |
 | `skeleton` | shadcn | Loading states across all content pages |
-| `tooltip` | shadcn | Stat abbreviations, ingredient quantities on hover |
+| `tooltip` | shadcn | Grid/Table view toggle button labels; stat abbreviations; ingredient quantities on hover |
 | `breadcrumb` | shadcn | Navigation path on all content pages |
 | `pagination` | shadcn | Category listing, patch notes list |
 | `ItemCard` | custom | Grid view item/mask card — uses shadcn `card` internally |
@@ -462,7 +474,7 @@ Inherits Phase 1. Phase 2 additions:
 | `SkillList` | custom | Mask skills list with badge |
 | `BuildTabs` | custom | Mask builds — wraps shadcn `tabs` |
 | `SearchDropdown` | custom | Floating search results panel — uses Pagefind |
-| `ViewToggle` | custom | Grid/Table toggle button group |
+| `ViewToggle` | custom | Grid/Table toggle button group with shadcn `tooltip` on each button |
 | `PatchEntry` | custom | Patch notes list item — uses shadcn `card` |
 
 ---
@@ -499,6 +511,7 @@ No third-party shadcn registries declared for Phase 2.
 | Content language | REQUIREMENTS.md UI-01 | 100% pt-BR |
 | MDX content structure | Phase 2 code_context | 75 files, published:false, 4 content dirs |
 | Existing search inputs | Phase 2 code_context | Topbar + HeroBanner inputs already render |
+| Hex corrections | globals.css computed | foreground #dedbd3, primary #eda01d, muted #212121 |
 
 ---
 
