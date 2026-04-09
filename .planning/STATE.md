@@ -3,20 +3,20 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 01-04-PLAN.md
-last_updated: "2026-04-09T00:51:35.847Z"
+stopped_at: Completed 01-03-PLAN.md
+last_updated: "2026-04-09T00:53:14.897Z"
 progress:
   total_phases: 6
   completed_phases: 0
   total_plans: 4
-  completed_plans: 2
-  percent: 50
+  completed_plans: 3
+  percent: 75
 ---
 
 # Project State: SoulmaskBR — Guia & Server List
 
 **Last updated:** 2026-04-09
-**Updated by:** execute-plan (01-04-PLAN.md)
+**Updated by:** execute-plan (01-03-PLAN.md)
 
 ---
 
@@ -39,7 +39,7 @@ Plan: 4 of 4
 
 **Progress:**
 
-```
+[████████░░] 75%
 [█████░░░░░] 50% (Phase 01: 2/4 plans complete)
 Phase 1 [████████████████████] 50%  Fundacao (2/4 plans)
 Phase 2 [                    ] 0%   Wiki & Conteudo
@@ -49,6 +49,7 @@ Phase 5 [                    ] 0%   Server List — Cadastro
 Phase 6 [                    ] 0%   Monetizacao Premium
 
 Overall: 0/6 phases complete
+
 ```
 
 ---
@@ -65,9 +66,8 @@ Overall: 0/6 phases complete
 | Phases complete | 0 |
 
 | Phase 01-fundacao P01 | 21min | 2 tasks | 20 files |
+| Phase 01-fundacao P03 | 10min | 2 tasks | 88 files |
 | Phase 01-fundacao P04 | 15min | 1 tasks | 2 files |
-
----
 
 ## Accumulated Context
 
@@ -83,6 +83,9 @@ Overall: 0/6 phases complete
 | cron-job.org para verificacao | Contorna limite de 1x/dia do Vercel Hobby |
 | Email/senha apenas (sem OAuth) | Simplifica v1 para donos de servidor |
 | Conteudo reescrito manualmente | Evita DMCA + garante qualidade SEO |
+| Fandom MediaWiki API para scraping | Mais confiavel que HTML scraping, suporta paginacao via cmcontinue |
+| wiki.gg skip quando robots.txt desabilita | Fandom confirmado como fonte primaria |
+| published:false sempre em writeMdx | D-09: todo conteudo requer revisao manual antes de publicar |
 
 ### Research Flags (validate before phase)
 
@@ -106,7 +109,7 @@ None.
 
 **To resume:** Run `/gsd:execute-phase 01-fundacao` to continue with Plan 02 (layout + homepage UI) and Plan 03 (scraping pipeline).
 
-**Stopped at:** Completed 01-04-PLAN.md
+**Stopped at:** Completed 01-03-PLAN.md
 
 **Context needed:**
 

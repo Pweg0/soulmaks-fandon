@@ -44,7 +44,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **INFR-01**: Aplicação deployada na Vercel com CI/CD automático
 - [x] **INFR-02**: Banco de dados Supabase com connection pooling (Supavisor)
 - [x] **INFR-03**: Autenticação via Supabase Auth com RLS policies
-- [ ] **INFR-04**: Pipeline de scraping local (Cheerio) para extração estruturada da wiki oficial
+- [x] **INFR-04**: Pipeline de scraping local (Cheerio) para extração estruturada da wiki oficial
 - [x] **INFR-05**: Cron job externo (cron-job.org) para verificação periódica de status dos servidores
 
 ### Interface
@@ -95,7 +95,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | INFR-01 | Phase 1 | Complete |
 | INFR-02 | Phase 1 | Complete |
 | INFR-03 | Phase 1 | Complete |
-| INFR-04 | Phase 1 | Pending |
+| INFR-04 | Phase 1 | Complete |
 | INFR-05 | Phase 1 | Complete |
 | UI-01 | Phase 1 | Pending |
 | UI-02 | Phase 1 | Pending |
